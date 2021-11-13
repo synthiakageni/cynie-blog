@@ -1,0 +1,43 @@
+<div class="navbar navbar-dark" role="navigation" style="margin-bottom:0; border-bottom: 1px solid; padding: 30px;">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/" class="navbar-brand"> OneMinuteblog </a>
+        </div>
+        <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="{{url_for('main.index')}}">Home</a></li>
+                    <li><a href="{{url_for('main.science_blogs')}}">Science</a></li>
+                    <li><a href="{{url_for('main.anaconda_blogs')}}">Anacondas</a></li>
+                    <li><a href="{{url_for('main.alien_blogs')}}">Aliens</a></li>
+                    <li><a href="{{url_for('main.birds_blogs')}}">Birds</a></li>
+                    <li><a href="{{url_for('main.culture_blogs')}}">Culture</a></li>
+                    <li><a href="{{url_for('main.poetry_blogs')}}">Poetry</a></li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    {% if current_user.is_authenticated %}
+                       
+                            <li><a href="{{url_for('main.update_profile', uname=current_user.username)}}">Profile</a></li>
+                            <li><a href="{{url_for('main.user_blogs',uname=current_user.username)}}">My blogs</a></li>
+                            <li role="separator" class="divider"></li>
+                        <li><a href="{{url_for('auth.logout')}}">Sign out</a></li>
+                          
+
+                            
+                        </ul>
+                    </li>
+             {% else %}
+                    <li><a href="{{url_for('auth.login')}}">Sign in</a></li>
+                </ul>
+         {% endif %}
+            </div>
+            <div class="container-fluid" style="background-color: #912F56; ">
+          </div>    
+    </div>
+</div>

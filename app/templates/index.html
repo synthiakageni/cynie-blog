@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{%block styles%}
+    {{ super() }}
+    
+    <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+{%endblock%}
+{% block content %}
+<style>
+    
+@import url('https://fonts.googleapis.com/css2?family=Gluten:wght@600&display=swap');
+body {
+    font-family: 'Gluten', cursive;
+}
+
+</style>
+<div class="container-fluid" style="background-color: #912F56; padding: 80px;">
+    <div class="text-center">
+        <h1 style="color: white;">OneMinuteblog</h1>
+    </div>
+</div>
+<div class="text-center">
+<div class="container" style="padding-bottom: 20px; margin: 5rem;">
+    <a href="{{url_for('main.new_blog')}}" class="btn btn-success">Create blog</a>
+</div>
+</div>
+<div class="container" style= "font-family: 'Gluten', cursive;;">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="well well-lg">
+                <h3>Science blogs</h3>
+                <p>Want to talk abour science,You are in the right place</p>
+                <a href="{{url_for('main.science_blogs')}}" class="btn btn-primary -center">View</a>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="well well-lg">
+                <h3>Anaconda blogs</h3>
+                <p>Want to talk about massice snakes, you're in the right place.</p>
+                <a href="{{url_for('main.anaconda_blogs')}}" class="btn btn-primary -center">View</a>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="well well-lg">
+                <h3>Alien blogs</h3>
+                <p>Want to talk about aliens?You are in the galactical world of conspiracy.</p>
+                <a href="{{url_for('main.alien_blogs')}}" class="btn btn-primary -center">View</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container" style= "font-family: 'Gluten', cursive;">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="well well-lg">
+                <h3>Birds blogs</h3>
+                <p>Want to talk about birds..Welcome</p>
+                <a href="{{url_for('main.birds_blogs')}}" class="btn btn-primary -center">View</a>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="well well-lg">
+                <h3>Culture blogs</h3>
+                <p>Want to talk about your Culture,Let</p>
+                <a href="{{url_for('main.culture_blogs')}}" class="btn btn-primary -center">View</a>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="well well-lg">
+                <h3>Poetry blogs</h3>
+                <p>Welcome to the hub of amazing poetry</p>
+                <a href="{{url_for('main.poetry_blogs')}}" class="btn btn-primary -center">View</a>
+            </div>
+        </div>
+    </div>
+    <br><br><br><br>
+</div>
+<div class="container-fluid" style="background-color: bisque; ">
+{% include "footer.html" %}
+</div>
+</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'base.html'%}
+{% import 'macros.html' as macro%}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{%block styles%}
+    {{ super() }}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gluten:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+{%endblock%}
+<!-- Content block -->
+{%block content%}
+<style>
+    
+@import url('https://fonts.googleapis.com/css2?family=Gluten:wght@600&display=swap');
+</style>
+
+<div class="container" style="font-family: 'Gluten', cursive;">
+    <div class="row">
+        <h3>{{blog.blog_title}}</h3>
+        <hr>
+        <p>{{blog.blog_content}}</p>
+        <span>
+        <p>Posted on {{date}} by {{blog.user.username| capitalize}}</p>
+        <a href="/blog/{{blog.id}}?like=1">
+            <i class="far fa-thumbs-up"></i>
+        </a>{{blog.likes}} <a href="/blog/{{blog.id}}?dislike=1">
+            <i class="far fa-thumbs-down"></i>
+        </a>{{blog.dislikes}}</span>
+
+    </div>
+    <div class="row">
+        <h4>Comments</h4>
+        <hr>
+        {% if current_user.is_authenticated %}
+            {{ wtf.quick_form(comment_form) }}
+        {%endif%}
+        {{macro.displayComments(comments)}}
+    </div>
+
+</div>
+
+{%endblock%}

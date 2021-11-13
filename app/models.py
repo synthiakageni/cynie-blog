@@ -6,7 +6,12 @@ from datetime import datetime
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
-
+class Quotes:
+    def __init__(self,author,id,quote):
+        self.author=author
+        self.id=id
+        self.quote=quote   
+        
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
 

@@ -1,12 +1,12 @@
 from . import main
-import flask
 from flask_login import login_required,current_user
 from flask import render_template,abort,redirect,url_for,request
 from ..models import Role,User
 from .forms import UpdateProfile,BlogForm,CommentForm
 from .. import db,photos
-from app.models import User,blog,Comment
+from app.models import User,blog,Comment 
 from ..forms import UpdateProfile
+from app.request import get_quotes
 
 #main route
 @main.route("/")
@@ -14,7 +14,8 @@ def index():
     """
     view root page that returns the index page and its data
     """
-    return render_template("index.html")
+    quote = get_quotes()
+    return render_template("index.html", quote = quote)
 
 #profile
 @main.route('/user/<uname>')
@@ -28,7 +29,7 @@ def profile(uname):
 
 
 #photos logic
-@main.route('/user/<uname>/update/pic',methods= ['POST'])
+@main.route('/user/<uname>/update/pic',methods= [' GET','POST'])
 @login_required
 def update_pic(uname):
     user = User.query.filter_by(username = uname).first()

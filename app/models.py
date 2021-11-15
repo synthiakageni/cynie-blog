@@ -80,7 +80,7 @@ class blog(db.Model):
         blogs = blog.query.filter_by(category=category).all()
         return blogs
 
-    #return blogs
+    
 
     # @classmethod
     # def count_blogs(cls,uname):

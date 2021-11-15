@@ -5,7 +5,7 @@ from flask import render_template,abort,redirect,url_for,request
 from ..models import Role,User
 from .forms import UpdateProfile,BlogForm,CommentForm
 from .. import db,photos
-from ..models import User,blog,Comment
+from app.models import User,blog,Comment
 from ..forms import UpdateProfile
 
 #main route
@@ -68,7 +68,7 @@ def new_blog():
         blog = blog_form.text.data
         category = blog_form.category.data
         # Updated blog instance
-        new_blog = Blog(blog_title=title,blog_content=blog,category=category, user=current_user,likes=0,dislikes=0)
+        new_blog = blog(blog_title=title,blog_content=blog,category=category, user=current_user,likes=0,dislikes=0)
 
         # Save blog method
         new_blog.save_blog()

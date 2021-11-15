@@ -1,14 +1,15 @@
 import os
 
 
-import re
+
 
 class Config:
     '''General configuration class'''
     QUOTES_API_URL='http://quotes.stormconsultancy.co.uk/random.json'
     SQLALCHEMY_TRACK_MODIFICATIONS=False
     SECRET_KEY = os.environ.get('SECRET_KEY')
-   
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://synthia:123@localhost/blog'
+
 
     UPLOADED_PHOTOS_DEST = 'app/static/photos' #we will store our photos in the static file since it is not advisable to that in the db
 

@@ -3,6 +3,8 @@ from werkzeug.security import check_password_hash, generate_password_hash
 from . import login_manager
 from flask_login import UserMixin
 from datetime import datetime
+
+
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
@@ -78,22 +80,18 @@ class blog(db.Model):
         blogs = blog.query.filter_by(category=category).all()
         return blogs
 
-    @classmethod
-    def get_blog(cls,id):
-        blog = blog.query.filter_by(id=id).first()
+    #return blogs
 
-        return blog
+    # @classmethod
+    # def count_blogs(cls,uname):
+    #     user = User.query.filter_by(username=uname).first()
+    #     blogs = blog.query.filter_by(user_id=user.id).all()
 
-    @classmethod
-    def count_blogs(cls,uname):
-        user = User.query.filter_by(username=uname).first()
-        blogs = blog.query.filter_by(user_id=user.id).all()
+    #     blogs_count = 0
+    #     for blog in blogs:
+    #         blogs_count += 1
 
-        blogs_count = 0
-        for blog in blogs:
-            blogs_count += 1
-
-        return blogs_count
+    #     return blogs_count
 
 class Comment(db.Model):
     __tablename__ = 'comments'
